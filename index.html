@@ -5,120 +5,167 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Profile</title>
-    <link rel="shorcut icon" type="x-icon" href="images/115150262.jfif">
+    <link rel="shortcut icon" type="x-icon" href="images/115150262.jfif">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .resume-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 40px 20px;
+            gap: 30px;
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .resume-left {
+            flex: 1 1 60%;
+        }
+
+        .resume-right {
+            flex: 1 1 35%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 100%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            border: #4860c7 5px solid;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        h3 {
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-top: 25px;
+        }
+
+        .section h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .summary {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li::before {
+            content: "✔️ ";
+            margin-right: 5px;
+        }
+
+        /* ✅ Responsive layout for small screens */
+        @media (max-width: 768px) {
+            .resume-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 20px 15px;
+            }
+
+            .resume-left,
+            .resume-right {
+                flex: 1 1 100%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 1rem;
+            }
+
+            .profile-image {
+                max-width: 150px;
+                margin-bottom: 20px;
+            }
+
+            .resume-right {
+                order: -1;
+                /* show image first on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .summary {
+                font-size: 0.9rem;
+            }
+
+            ul li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    body {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        height: 200vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .resume-container {
-        width: 90%;
-        max-width: 1000px;
-        padding: 20px;
-    }
-
-    .resume-card {
-        display: flex;
-        justify-content: space-between;
-        border-radius: 20px;
-        overflow: hidden;
-        padding: 40px;
-        gap: 30px;
-        backdrop-filter: blur(15px);
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #fff;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        border: #667eea 1px solid;
-    }
-
-    .resume-left {
-        flex: 1.5;
-    }
-
-    .resume-right {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile-image {
-        width: 50%;
-        max-width: 250px;
-        border-radius: 100%;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        object-fit: cover;
-        position: absolute;
-        top: 5%;
-        border: #4860c7 5px solid;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-        margin-bottom: 5px;
-    }
-
-    h3 {
-        font-weight: 300;
-        margin-bottom: 20px;
-    }
-
-    .section {
-        margin-top: 25px;
-    }
-
-    .section h2 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        padding-bottom: 5px;
-    }
-
-    .summary {
-        margin-bottom: 20px;
-        line-height: 1.6;
-        font-size: 1rem;
-    }
-
-    ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    ul li::before {
-        content: "✔️ ";
-        margin-right: 5px;
-    }
-</style>
-
 
 <body>
-    <!--Student Profile Main-->
     <div class="resume-container">
-        <div class="resume-card glass">
+        <div class="resume-card">
+            <div class="resume-right">
+                <img src="./images/115150262.jfif" alt="Profile Picture" class="profile-image" />
+            </div>
             <div class="resume-left">
                 <h1>Student Profile</h1>
                 <h3>Joshua Y. Singuelas</h3>
                 <p class="summary">
                     Year Level: 4th Year College <br>
                     Course: Bachelor of Science in Information Systems <br>
-                    School: I-Tech College Bago City, Inc. <br>
+                    School: I-Tech College Bago City, Inc.
                 </p>
-                <!--Personal Information Section-->
+
                 <div class="section">
                     <h2>Personal Information</h2>
                     <ul>
@@ -133,15 +180,14 @@
                     </ul>
                 </div>
 
-                <!--Parent/Guardian Section-->
                 <div class="section">
                     <h2>Parents / Guardian</h2>
                     <ul>
-                        <li><strong>Father:</strong> Wilhem Y. Singuelas- 0928-609-6798</li>
+                        <li><strong>Father:</strong> Wilhem Y. Singuelas - 0928-609-6798</li>
                         <li><strong>Mother:</strong> Caroline Y. Singuelas - 0928-609-6798</li>
                     </ul>
                 </div>
-                <!--Acamedic Information Section-->
+
                 <div class="section">
                     <h2>Academic Information</h2>
                     <ul>
@@ -150,17 +196,17 @@
                         <li><strong>School Year:</strong> 2025–2026</li>
                     </ul>
                 </div>
-                <!--School History Section-->
+
                 <div class="section">
                     <h2>School History</h2>
                     <ul>
                         <li><strong>Elementary:</strong> Bago Elementary School</li>
-                        <li><strong>Junior High:</strong> Ramon Torres National High school</li>
-                        <li><strong>Senior High:</strong> I-Tech Computer Education BAGO CITY, INC.</li>
-                        <li><strong>College: I-Tech College Bago City, Inc. </strong> </li>
+                        <li><strong>Junior High:</strong> Ramon Torres National High School</li>
+                        <li><strong>Senior High:</strong> I-Tech Computer Education Bago City, Inc.</li>
+                        <li><strong>College:</strong> I-Tech College Bago City, Inc.</li>
                     </ul>
                 </div>
-                <!--Extracurricular Section-->
+
                 <div class="section">
                     <h2>Extracurricular Activities</h2>
                     <ul>
@@ -168,10 +214,6 @@
                         <li>Volunteer – N/A</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="resume-right">
-                <img src="./images/115150262.jfif" alt="Profile Picture" class="profile-image" />
             </div>
         </div>
     </div>
